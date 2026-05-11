@@ -51,6 +51,8 @@ class DrowsinessDetector:
         
         is_drowsy = False
         avg_ear   = 0.0
+        left_pts = []
+        right_pts = []
         
         if result.face_landmarks:
             landmarks = result.face_landmarks[0]
@@ -69,5 +71,6 @@ class DrowsinessDetector:
                 self.frame_counter = 0
                 self.alarm_on = False
 
-        return frame, is_drowsy, avg_ear
+        return frame, is_drowsy, avg_ear, right_pts, left_pts
+    
     

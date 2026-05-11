@@ -13,7 +13,7 @@ def main():
         if not ret:
             break
         
-        frame, is_drowsy, avg_ear = detector.process(frame)
+        frame, is_drowsy, avg_ear, left_pts, right_pts = detector.process(frame)
         
         if is_drowsy:
             play_alarm(ALARM_PATH)
@@ -21,6 +21,8 @@ def main():
             stop_alarm()
         
         draw_ui(frame, avg_ear, is_drowsy)
+        draw_eye_dots(frame, left_pts)
+        draw_eye_dots(frame, right_pts)
         
         cv2.imshow("DrowsyGuard", frame)
         
