@@ -1,6 +1,6 @@
 import cv2
 from detector import DrowsinessDetector
-from alert import play_alarm
+from alert import play_alarm, stop_alarm
 from utils import draw_ui, draw_eye_dots
 
 ALARM_PATH = "assets/alarm.wav"
@@ -17,6 +17,8 @@ def main():
         
         if is_drowsy:
             play_alarm(ALARM_PATH)
+        else:
+            stop_alarm()
         
         draw_ui(frame, avg_ear, is_drowsy)
         
